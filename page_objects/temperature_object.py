@@ -64,11 +64,11 @@ class Temperature_Object:
         "check the temperature"
         temp_element = self.get_temperature()
         if int(temp_element) <=19: 
-            result_flag = self.click_moisturizers(self) 
-            result_flag &= self.check_redirect_moisturizers(self)
+            result_flag = self.click_moisturizers() 
+            result_flag &= self.check_redirect_moisturizers()
         elif int(temp_element) >=34: 
-            result_flag = self.click_sunscreens(self)            
-            result_flag &= self.check_redirect_sunscreens(self)
+            result_flag = self.click_sunscreens()            
+            result_flag &= self.check_redirect_sunscreens()
            
         return result_flag
 
