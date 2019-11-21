@@ -10,7 +10,7 @@ import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
-import product_payment_conf as conf
+import conf.product_payment_conf as conf
 
 
 def test_temperature_form(base_url,browser,browser_version,os_version,os_name,remote_flag,remote_project_name,remote_build_name):
