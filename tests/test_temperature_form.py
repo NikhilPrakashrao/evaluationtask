@@ -10,7 +10,8 @@ import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
-import conf.product_payment_conf as conf
+import conf.product_payment_conf as conf ## added conf.
+
 
 
 def test_temperature_form(base_url,browser,browser_version,os_version,os_name,remote_flag,remote_project_name,remote_build_name):
@@ -46,6 +47,8 @@ def test_temperature_form(base_url,browser,browser_version,os_version,os_name,re
         #5. Get the product category from the conf
         product_moisturizers_category = conf.product_moisturizers_category
         product_sunscreens_category = conf.product_sunscreens_category
+        #print(conf.product_moisturizers_category)
+        #print(conf.product_sunscreens_category)
 
         #6. Select the product type
         result_flag = test_obj.select_product_type(product_moisturizers_category,product_sunscreens_category)  

@@ -45,25 +45,32 @@ class Temperature_Object:
 
     def check_redirect_moisturizers(self):
         "Check if we have been redirected to the redirect page"
-        result_flag = True ##False changed to true       
-        if self.redirect_title_mositurizers in self.driver.title:
-            result_flag = False
+        result_flag = False   
+        print(self.redirect_title_mositurizers)
+        print(self.driver.title.lower())    
+        if self.redirect_title_mositurizers in self.driver.title.lower():
             self.switch_page('moisturizers') ## added switch_page statement
+            result_flag = True ##False changed to true 
+            
         
         return result_flag    
 
     def check_redirect_sunscreens(self):
         "Check if we have been redirected to the redirect page"
-        result_flag = True ##False changed to true       
-        if self.redirect_title_mositurizers in self.driver.title:
-            result_flag = False
+        result_flag = False       
+        print(self.redirect_title_sunscreens)
+        print(self.driver.title.lower()) # added lower
+        if self.redirect_title_sunscreens in self.driver.title.lower():## added lower
             self.switch_page('sunscreens')   ## added switch_page statement
+            result_flag = True ##False changed to true 
+            
             
         
         return result_flag 
 
     def process_temperature(self):
         "check the temperature"
+        result_flag = False
         temp_element = self.get_temperature()
         if int(temp_element) <=19: ## added int
             result_flag = self.click_moisturizers() ##removed self from brackets
@@ -71,7 +78,7 @@ class Temperature_Object:
         elif int(temp_element) >=34: ## added int
             result_flag = self.click_sunscreens()  ##removed self from brackets          
             result_flag &= self.check_redirect_sunscreens() ##removed self from brackets
-           
+        print(temp_element)
         return result_flag
 
 
