@@ -48,6 +48,7 @@ class Temperature_Object:
         result_flag = True ##False changed to true       
         if self.redirect_title_mositurizers in self.driver.title:
             result_flag = False
+            self.switch_page('moisturizers') ## added switch_page statement
         
         return result_flag    
 
@@ -56,6 +57,7 @@ class Temperature_Object:
         result_flag = True ##False changed to true       
         if self.redirect_title_mositurizers in self.driver.title:
             result_flag = False
+            self.switch_page('sunscreens')   ## added switch_page statement
             
         
         return result_flag 
