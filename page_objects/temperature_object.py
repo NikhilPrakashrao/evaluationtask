@@ -63,12 +63,12 @@ class Temperature_Object:
     def process_temperature(self):
         "check the temperature"
         temp_element = self.get_temperature()
-        if int(temp_element) <=19: 
-            result_flag = self.click_moisturizers() 
-            result_flag &= self.check_redirect_moisturizers()
-        elif int(temp_element) >=34: 
-            result_flag = self.click_sunscreens()            
-            result_flag &= self.check_redirect_sunscreens()
+        if int(temp_element) <=19: ## added int
+            result_flag = self.click_moisturizers() ##removed self from brackets
+            result_flag &= self.check_redirect_moisturizers() ##removed self from brackets
+        elif int(temp_element) >=34: ## added int
+            result_flag = self.click_sunscreens()  ##removed self from brackets          
+            result_flag &= self.check_redirect_sunscreens() ##removed self from brackets
            
         return result_flag
 

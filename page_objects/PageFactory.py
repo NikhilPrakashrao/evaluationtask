@@ -17,7 +17,7 @@ from page_objects.temperature_sunscreen_redirect_page import Temperature_Sunscre
 
 class PageFactory():
     "PageFactory uses the factory design pattern."
-    def get_page_object(page_name,base_url='http://weathershopper.pythonanywhere.com/',trailing_slash_flag=True):
+    def get_page_object(page_name,base_url='http://weathershopper.pythonanywhere.com/',trailing_slash_flag=True):## Changed the position of page_name to first
         "Return the appropriate page object based on page_name"
         test_obj = None
         page_name = page_name.lower()

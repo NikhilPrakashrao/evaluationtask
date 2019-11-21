@@ -14,8 +14,8 @@
 
 #Main page
 temp_field = "xpath,//span[@id ='temperature']"
-click_moisturizers = "xpath,//button[text()='Buymoisturizers']" #Removed the space in xpath
-click_sunscreens= "xpath,//button[text()='Buysunscreens']" #removed the space in xpath
+click_moisturizers = "xpath,//button[text()='Buy moisturizers']" ##added space between Buy_moisturizers
+click_sunscreens= "xpath,//button[text()='Buy sunscreens']" ##added space between Buy_sunscreens
 
 #Moisturizer header
 heading_moisturizer = "xpath,//h2[contains(text(),'Moisturizers')]"

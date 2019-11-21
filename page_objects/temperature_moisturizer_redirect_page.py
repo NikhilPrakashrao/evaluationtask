@@ -25,7 +25,7 @@ class Temperature_Moisturizer_Redirect_Page(Base_Page,Product_Object):
         "Check if the heading exists"
         result_flag = self.check_element_present(self.heading)
         self.conditional_write(result_flag,
-            positive='Correct heading present on redirect page',
+            positive='Correct heading present on redirect page', ## added comma
             negative='Heading on redirect page is INCORRECT!!',
             level='debug') 
 
