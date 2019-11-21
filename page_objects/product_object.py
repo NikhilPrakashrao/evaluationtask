@@ -49,6 +49,8 @@ class Product_Object:
             negative='Failed to click on "cart" button',
             level='debug')
 
+        return result_flag ## Added return statement   
+
 
     def process_selected_products(self,product_category):
         "Process the selected products"        
@@ -64,6 +66,6 @@ class Product_Object:
         if page_heading == self.sunscreen_heading:
             result_flag = self.process_selected_products(product_sunscreens_category)            
         else:           
-            result_flag = self.process_selected_products(product_sunscreens_category)                
+            result_flag = self.process_selected_products(product_moisturizers_category)  ## chenged sunscreens to moisturizers              
     
         return result_flag        
