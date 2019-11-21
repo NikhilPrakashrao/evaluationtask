@@ -45,7 +45,7 @@ class Temperature_Object:
 
     def check_redirect_moisturizers(self):
         "Check if we have been redirected to the redirect page"
-        result_flag = False       
+        result_flag = True ##False changed to true       
         if self.redirect_title_mositurizers in self.driver.title:
             result_flag = False
         
@@ -53,7 +53,7 @@ class Temperature_Object:
 
     def check_redirect_sunscreens(self):
         "Check if we have been redirected to the redirect page"
-        result_flag = False        
+        result_flag = True ##False changed to true       
         if self.redirect_title_mositurizers in self.driver.title:
             result_flag = False
             
