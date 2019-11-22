@@ -12,8 +12,6 @@ from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
 import conf.product_payment_conf as conf ## added conf.
 
-
-
 def test_temperature_form(base_url,browser,browser_version,os_version,os_name,remote_flag,remote_project_name,remote_build_name):
 
     "Run the test"
@@ -47,17 +45,14 @@ def test_temperature_form(base_url,browser,browser_version,os_version,os_name,re
         #5. Get the product category from the conf
         product_moisturizers_category = conf.product_moisturizers_category
         product_sunscreens_category = conf.product_sunscreens_category
-        #print(conf.product_moisturizers_category)
-        #print(conf.product_sunscreens_category)
 
         #6. Select the product type
         result_flag = test_obj.select_product_type(product_moisturizers_category,product_sunscreens_category)  
         test_obj.log_result(result_flag,
                             positive="Selected the products\n",
                             negative="Not able to select the products")
-        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))       
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))     
        
-        
         #7. Print out the results
         test_obj.write_test_summary()
 
