@@ -13,9 +13,11 @@ Pages implemented so far:
 from page_objects.temperature_main_page import Temperature_Main_Page
 from page_objects.temperature_moisturizer_redirect_page import Temperature_Moisturizer_Redirect_Page
 from page_objects.temperature_sunscreen_redirect_page import Temperature_Sunscreen_Redirect_Page
+#from page_objects.payment_page import Payment_Page
 
 
 class PageFactory():
+
     "PageFactory uses the factory design pattern."
     def get_page_object(page_name,base_url='http://weathershopper.pythonanywhere.com/',trailing_slash_flag=True):## Changed the position of page_name to first
         "Return the appropriate page object based on page_name"
@@ -27,6 +29,8 @@ class PageFactory():
             test_obj = Temperature_Moisturizer_Redirect_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
         elif page_name == "sunscreens":
             test_obj = Temperature_Sunscreen_Redirect_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
+        elif page_name == 'confirmation':
+            test_obj = Payment_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
         
         return test_obj
         
