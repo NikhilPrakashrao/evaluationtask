@@ -13,7 +13,7 @@ Pages implemented so far:
 from page_objects.temperature_main_page import Temperature_Main_Page
 from page_objects.temperature_moisturizer_redirect_page import Temperature_Moisturizer_Redirect_Page
 from page_objects.temperature_sunscreen_redirect_page import Temperature_Sunscreen_Redirect_Page
-#from page_objects.payment_page import Payment_Page
+from page_objects.payment_page import Payment_Page
 
 
 class PageFactory():
