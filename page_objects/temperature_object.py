@@ -1,7 +1,7 @@
 """
 This class models the form on the weather shopper application main page
 """
-
+import random
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
@@ -14,7 +14,9 @@ class Temperature_Object:
     click_buy_moisturizers = locators.click_moisturizers
     click_buy_sunscreens = locators.click_sunscreens
     redirect_title_mositurizers = 'moisturizers'
-    redirect_title_sunscreens = 'sunscreens'  
+    redirect_title_sunscreens = 'sunscreens'
+
+    
 
     def get_temperature(self):
         "get the temperature value from the page"
@@ -60,9 +62,7 @@ class Temperature_Object:
             self.switch_page('sunscreens')   ## added switch_page statement
             result_flag = True ##False changed to true 
             
-            
-        
-        return result_flag 
+            return result_flag
 
     def process_temperature(self):
         "check the temperature"
@@ -76,5 +76,22 @@ class Temperature_Object:
             result_flag &= self.check_redirect_sunscreens() ##removed self from brackets
         return result_flag
 
+        ###################
+
+    
+
+    
 
 
+
+    
+
+
+
+"""
+        self.conditional_write(result_flag,
+            positive='Clicked on the "pay_with_card" button',
+            negative='Failed to click on "pay_with_card" button',
+            level='debug')
+            
+"""

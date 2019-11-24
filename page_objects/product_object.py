@@ -6,6 +6,8 @@ from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import re
+import random
+import time
 
 class Product_Object:
     "Page object for the Moisturizer and sunscreens"     
@@ -13,12 +15,23 @@ class Product_Object:
     product_price_element = locators.product_price_element
     product_add_element = locators.product_add_element
     cart_button = locators.click_cart  
+    pay_with_card = locators.pay_with_card
+    iframe_name = locators.iframe_name
+    email = locators.email
+    card_number = locators.card_number
+    card_expiry = locators.card_expiry
+    cvv = locators.cvc
+    zip_code = locators.zip_code
+    checkbox = locators.checkbox
+    mobile_num = locators.mobile_no
+    pay_button = locators.pay_button
     checkout_heading = locators.checkout_heading
     sunscreen_heading = locators.heading_sunscreen
     moisturizers_heading = locators.heading_moisturizer    
     product_category = []    
     product_moisturizers_category = []
     product_sunscreens_category = []
+    pay_with_card_button = locators.pay_with_card
     
 
     def add_products(self,product_category):
@@ -55,7 +68,7 @@ class Product_Object:
         "Process the selected products"        
         result_flag = self.add_products(product_category)
         result_flag &= self.click_cart()
-       
+        result_flag &= self.check_redirect_cart()
         return result_flag
 
     def select_product_type(self,product_moisturizers_category,product_sunscreens_category):
@@ -66,5 +79,45 @@ class Product_Object:
         else:           
             result_flag = self.process_selected_products(product_moisturizers_category)  ## changed sunscreens to moisturizers            
         
-        return result_flag  
+        return result_flag 
 
+    def check_redirect_cart(self):
+        "check if we have been redirected to the cart page"
+        result_flag = False
+        if 'cart' in self.get_current_url():
+            #self.switch_page('cart')
+            print("i am in cart")
+            result_flag = self.click_element(self.pay_with_card_button) 
+            
+            self.switch_frame(self.iframe_name)
+            result_flag &= self.pay_process()
+            
+            
+        return result_flag
+
+    def random_email(self):
+        "getting random mai; everytime"
+        random_num = random.randint(1,1000)
+        random_mail = 'nikhil' + str(random_num) + '@gmail.com'
+        return random_mail
+    
+
+
+    def pay_process(self):
+        "Filling the frame"
+        result_flag = False
+
+        result_flag =  self.set_text(self.email,self.random_email())
+        result_flag &= self.set_text(self.card_number,'4242424242424242')
+        result_flag &= self.set_text(self.card_expiry,'06/33')
+        result_flag &= self.set_text(self.cvv,'951')
+        result_flag &= self.set_text(self.zip_code,'585103')
+        result_flag &= self.select_checkbox(self.checkbox)
+        result_flag &= self.set_text(self.mobile_num,'7892777777')
+        result_flag &= self.click_element(self.pay_button)
+        time.sleep(5)
+        self.switch_page('confirmation')
+
+        
+
+        return result_flag

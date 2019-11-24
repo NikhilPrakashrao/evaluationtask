@@ -51,7 +51,15 @@ def test_temperature_form(base_url,browser,browser_version,os_version,os_name,re
         test_obj.log_result(result_flag,
                             positive="Selected the products\n",
                             negative="Not able to select the products")
-        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))     
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))   
+    
+        #8. click on pay with card
+        result_flag = test_obj.check_cofirmation_page()
+        test_obj.log_result(result_flag,
+                            positive="Successfully redirected on confirmation page\n",
+                            negative="Unable to click confirmation page")
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
+    
        
         #7. Print out the results
         test_obj.write_test_summary()

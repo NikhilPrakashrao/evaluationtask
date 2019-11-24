@@ -61,6 +61,10 @@ cvc = "xpath,//input[@placeholder='CVC']"
 
 zip_code = "xpath, //input[@placeholder='ZIP Code']"
 
+checkbox = "xpath,//div[contains(@class,'Checkbox-tick')]" ## added by me
+
+mobile_no = "xpath,//input[contains(@autocomplete,'mobile tel')]" ## added by me
+
 pay_button = "xpath, //button[@type ='submit']"
 
 
