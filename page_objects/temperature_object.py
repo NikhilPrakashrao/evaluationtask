@@ -1,7 +1,7 @@
 """
 This class models the form on the weather shopper application main page
 """
-import random
+
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
@@ -74,24 +74,5 @@ class Temperature_Object:
         elif int(temp_element) >=34: ## added int
             result_flag = self.click_sunscreens()  ##removed self from brackets          
             result_flag &= self.check_redirect_sunscreens() ##removed self from brackets
+        
         return result_flag
-
-        ###################
-
-    
-
-    
-
-
-
-    
-
-
-
-"""
-        self.conditional_write(result_flag,
-            positive='Clicked on the "pay_with_card" button',
-            negative='Failed to click on "pay_with_card" button',
-            level='debug')
-            
-"""

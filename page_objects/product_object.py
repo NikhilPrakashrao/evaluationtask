@@ -39,14 +39,17 @@ class Product_Object:
         result_flag = False   
         for product in product_category:
             price_product = 100000          
-            product_elements = self.get_elements(self.product_price_element%product)            
-            for element in product_elements:                           
-                product_price = element.text                                   
-                product_price = re.findall(r'\b\d+\b', product_price)                        
-                if int(product_price[0]) < price_product:                   
-                    price_product = int(product_price[0])                               
-                    result_flag = self.click_element(self.product_add_element%(product,price_product)) #Moving inside if
-            self.conditional_write(result_flag,
+            product_elements = self.get_elements(self.product_price_element%product)    
+
+        for element in product_elements:                           
+            product_price = element.text                                   
+            product_price = re.findall(r'\b\d+\b', product_price)  
+
+            if int(product_price[0]) < price_product:                   
+                price_product = int(product_price[0])
+
+                result_flag = self.click_element(self.product_add_element%(product,price_product)) #Moving inside if
+                self.conditional_write(result_flag,
                                 positive='Successfully added products',
                                 negative='Failed to add products',
                                 level='debug')        
@@ -63,17 +66,17 @@ class Product_Object:
 
         return result_flag ## Added return statement  
 
-
     def process_selected_products(self,product_category):
         "Process the selected products"        
         result_flag = self.add_products(product_category)
         result_flag &= self.click_cart()
         result_flag &= self.check_redirect_cart()
+
         return result_flag
 
     def select_product_type(self,product_moisturizers_category,product_sunscreens_category):
         "Select products type"          
-        result_flag = False
+        result_flag = None
         if 'sunscreen' in self.get_current_url():
             result_flag = self.process_selected_products(product_sunscreens_category)            
         else:           
@@ -85,24 +88,19 @@ class Product_Object:
         "check if we have been redirected to the cart page"
         result_flag = False
         if 'cart' in self.get_current_url():
-            #self.switch_page('cart')
-            print("i am in cart")
             result_flag = self.click_element(self.pay_with_card_button) 
-            
             self.switch_frame(self.iframe_name)
             result_flag &= self.pay_process()
-            
             
         return result_flag
 
     def random_email(self):
-        "getting random mai; everytime"
+        "getting random mail everytime"
         random_num = random.randint(1,1000)
-        random_mail = 'nikhil' + str(random_num) + '@gmail.com'
+        random_mail = 'Qxf2' + str(random_num) + '@gmail.com'
+
         return random_mail
     
-
-
     def pay_process(self):
         "Filling the frame"
         result_flag = False
@@ -117,7 +115,5 @@ class Product_Object:
         result_flag &= self.click_element(self.pay_button)
         time.sleep(5)
         self.switch_page('confirmation')
-
-        
 
         return result_flag
