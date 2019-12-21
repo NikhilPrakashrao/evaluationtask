@@ -96,7 +96,7 @@ class Product_Object:
 
     def random_email(self):
         "getting random mail everytime"
-        random_num = random.randint(1,1000)
+        random_num = random.randint(1,1000) 
         random_mail = 'Qxf2' + str(random_num) + '@gmail.com'
 
         return random_mail

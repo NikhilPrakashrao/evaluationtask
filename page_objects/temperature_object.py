@@ -50,7 +50,7 @@ class Temperature_Object:
         result_flag = False       
         if self.redirect_title_mositurizers in self.driver.title.lower():
             self.switch_page('moisturizers') ## added switch_page statement
-            result_flag = True ##False changed to true 
+            result_flag = True ##False changed to true
             
         
         return result_flag    
